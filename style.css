@@ -1,8 +1,29 @@
+/* --- Base Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* New: Hide main content and navbar by default to prevent flicker */
+body > *:not(.splash-screen) {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     color: #fff;
     background-color: #0a0a0a;
+    overflow-x: hidden; /* Prevents horizontal scrollbar */
 }
 
 #bg-video {
@@ -19,53 +40,209 @@ body {
     position: relative;
     z-index: 1;
     padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-header {
+/* --- Hero Section --- */
+.hero-section {
     text-align: center;
     padding: 80px 0 50px;
     text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
-header h1 {
-    font-size: 3.5em;
+.hero-section h1 {
+    font-size: 4em;
     font-weight: 700;
-    color: blue;
-    letter-spacing: 2px;
+    color: red;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    animation: textGlow 2s ease-in-out infinite alternate;
 }
 
-header p {
-    font-size: 1.2em;
+/* --- New Glitch Effect for H1 --- */
+.hero-section h1 .glitch {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-section h1 .glitch:before,
+.hero-section h1 .glitch:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0a0a0a;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+}
+
+.hero-section h1 .glitch:before {
+    left: 2px;
+    text-shadow: -2px 0 #ff00c1;
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.hero-section h1 .glitch:after {
+    left: -2px;
+    text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+    animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+    0% {
+        clip: rect(32px, 9999px, 80px, 0);
+        transform: skew(0.5deg);
+    }
+    10% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    20% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    30% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    40% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    50% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    60% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    70% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    80% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    90% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    100% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+}
+
+@keyframes glitch-anim-2 {
+    0% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    10% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    20% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    30% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    40% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    50% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    60% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    70% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    80% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    90% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+    100% {
+        clip: rect(100px, 9999px, 80px, 0);
+        transform: skew(0.4deg);
+    }
+}
+
+
+.hero-section p {
+    font-size: 1.5em;
     font-weight: 400;
-    margin-top: 10px;
+    margin-top: 15px;
+    animation: fadeInDown 1s ease-out 1s forwards;
+    opacity: 0;
 }
 
+.contact-info {
+    font-size: 1em;
+    margin-top: 20px;
+}
+.contact-info a {
+    color: #ffd700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.contact-info a:hover {
+    color: #fff;
+}
+
+/* --- Tournament Grid Section --- */
 .tournament-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     padding: 20px;
+    margin-top: 20px;
 }
 
 .tournament-box {
     background: rgba(15, 15, 15, 0.7);
-    border: 2px solid #ff4500;
+    border: 2px solid #00bfff;
     border-radius: 15px;
     padding: 30px;
     text-align: center;
-    box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
     transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
     overflow: hidden;
+    animation: slideUp 0.8s ease-out forwards;
 }
 
 .tournament-box:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 0 30px rgba(255, 69, 0, 0.6), 0 0 50px rgba(255, 69, 0, 0.3);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 0 40px rgba(0, 191, 255, 0.6), 0 0 80px rgba(0, 191, 255, 0.3);
     background: rgba(25, 25, 25, 0.8);
 }
 
 .tournament-box h2 {
-    color: #ff4500;
+    color: #00bfff;
     font-size: 2em;
     font-weight: 600;
     margin-bottom: 15px;
@@ -86,7 +263,7 @@ header p {
 }
 
 .join-btn {
-    background-color: #ff4500;
+    background-color: #00bfff;
     color: #fff;
     border: none;
     padding: 15px 35px;
@@ -97,15 +274,16 @@ header p {
     text-transform: uppercase;
     margin-top: 25px;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.5);
 }
 
 .join-btn:hover {
-    background-color: #e63e00;
-    transform: translateY(-3px);
+    background-color: #0099cc;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 191, 255, 0.7);
 }
 
-/* Modal Styling */
+/* --- Modal Styling --- */
 .modal {
     display: none;
     position: fixed;
@@ -124,16 +302,17 @@ header p {
     background: linear-gradient(135deg, #1e1e1e, #0a0a0a);
     margin: 5% auto;
     padding: 40px;
-    border: 2px solid #ff4500;
+    border: 2px solid #00bfff;
     border-radius: 20px;
     width: 90%;
     max-width: 550px;
     position: relative;
-    box-shadow: 0 0 40px rgba(255, 69, 0, 0.4);
+    box-shadow: 0 0 40px rgba(0, 191, 255, 0.4);
+    animation: zoomIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 .close-btn {
-    color: #ff4500;
+    color: #00bfff;
     float: right;
     font-size: 30px;
     font-weight: bold;
@@ -147,7 +326,7 @@ header p {
 
 .modal-content h2 {
     font-size: 2.5em;
-    color: #ff4500;
+    color: #00bfff;
     text-align: center;
     margin-bottom: 20px;
     font-weight: 700;
@@ -155,7 +334,14 @@ header p {
 
 .form-group {
     margin-bottom: 20px;
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
 }
+
+#join-form .form-group:nth-child(1) { animation-delay: 0.2s; }
+#join-form .form-group:nth-child(2) { animation-delay: 0.4s; }
+#join-form .form-group:nth-child(3) { animation-delay: 0.6s; }
+#join-form .form-group:nth-child(4) { animation-delay: 0.8s; }
 
 .form-group label {
     display: block;
@@ -177,8 +363,8 @@ header p {
 }
 
 .form-group input:focus {
-    border-color: #ff4500;
-    box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+    border-color: #00bfff;
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
     outline: none;
 }
 
@@ -188,6 +374,7 @@ header p {
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.05);
     margin-top: 25px;
+    animation: pulse 1.5s ease-in-out infinite;
 }
 
 .payment-info {
@@ -207,7 +394,7 @@ header p {
 .submit-btn {
     width: 100%;
     padding: 15px;
-    background-color: #ff4500;
+    background-color: #00bfff;
     color: #fff;
     border: none;
     border-radius: 50px;
@@ -216,22 +403,124 @@ header p {
     cursor: pointer;
     margin-top: 30px;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.5);
 }
 
 .submit-btn:hover {
-    background-color: #e63e00;
+    background-color: #0099cc;
     transform: translateY(-3px);
 }
 
-/* Animations */
+/* --- Footer --- */
+.footer-section {
+    padding: 20px 0;
+    background: rgba(15, 15, 15, 0.7);
+    border-top: 1px solid #333;
+    text-align: center;
+}
+
+.social-link-list {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 10px;
+}
+.social-link {
+    color: #fff;
+    font-size: 1.5em;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.social-link:hover {
+    color: #00bfff;
+    transform: scale(1.2);
+}
+
+.policy-text {
+    margin-top: 10px;
+}
+
+.policy-link {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.policy-link:hover {
+    color: #00bfff;
+}
+
+.separator {
+    color: #fff;
+    margin: 0 5px;
+}
+
+/* --- Splash Screen Styles --- */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0a0a0a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeOutSplash 1s ease-out 3s forwards;
+    opacity: 1;
+}
+
+.splash-content {
+    text-align: center;
+    opacity: 0;
+    animation: fadeInSplash 1s ease-in 0.5s forwards;
+}
+
+.splash-logo {
+    width: 150px;
+    height: auto;
+    animation: zoomInPulse 1.5s ease-in-out infinite;
+}
+
+.splash-text {
+    font-size: 1.5em;
+    color: #fff;
+    margin-top: 15px;
+    letter-spacing: 2px;
+}
+
+/* Splash Screen Animations */
+@keyframes fadeInSplash {
+    to { opacity: 1; }
+}
+
+@keyframes fadeOutSplash {
+    to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes zoomInPulse {
+    0% { transform: scale(0.8); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(0.8); }
+}
+
+/* --- (All your previous CSS code will follow here) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+/* ... rest of your CSS */
+
+/* --- Keyframe Animations --- */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-.fade-in {
-    animation: fadeIn 1s ease-in-out;
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideUp {
@@ -239,72 +528,72 @@ header p {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.slide-up {
-    animation: slideUp 0.8s ease-out forwards;
-}
-
-.tournament-box:nth-child(1) { animation-delay: 0.2s; }
-.tournament-box:nth-child(2) { animation-delay: 0.4s; }
-.tournament-box:nth-child(3) { animation-delay: 0.6s; }
-.tournament-box:nth-child(4) { animation-delay: 0.8s; }
-.tournament-box:nth-child(5) { animation-delay: 1.0s; }
-.tournament-box:nth-child(6) { animation-delay: 1.2s; }
-
 @keyframes zoomIn {
     from { transform: scale(0.8); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
-.animate-zoom {
-    animation: zoomIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+@keyframes textGlow {
+    from { text-shadow: 0 0 5px #00bfff, 0 0 10px #00bfff; }
+    to { text-shadow: 0 0 20px #00bfff, 0 0 40px #00bfff; }
 }
 
-/* Media query for smaller mobile devices (e.g., up to 480px) */
-@media screen and (max-width: 480px) {
-    header h1 {
-        font-size: 2.5em; /* Make the main heading smaller */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
-
-    header p {
-        font-size: 1em; /* Reduce paragraph font size */
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
 
-    .tournament-grid {
-        grid-template-columns: 1fr; /* Stack tournament boxes in a single column */
-        gap: 20px; /* Reduce the gap between boxes */
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 rgba(0, 255, 153, 0.7); }
+    70% { transform: scale(1.02); box-shadow: 0 0 20px rgba(0, 255, 153, 0.9); }
+    100% { transform: scale(1); box-shadow: 0 0 0 rgba(0, 255, 153, 0.7); }
+}
+
+/* New button click effect */
+.join-btn.click-effect {
+    animation: buttonPulse 0.4s ease-out;
+}
+
+@keyframes buttonPulse {
+    0% {
+        transform: scale(1);
     }
-
-    .tournament-box {
-        padding: 20px; /* Reduce padding inside each tournament box */
+    50% {
+        transform: scale(1.05);
     }
-
-    .tournament-box h2 {
-        font-size: 1.5em; /* Make the tournament title smaller */
+    100% {
+        transform: scale(1);
     }
+}
 
-    .details p {
-        font-size: 1em; /* Reduce the font size of details like entry fee and prize pool */
+
+/* --- Media Queries --- */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 3em;
     }
-
-    .join-btn {
-        padding: 12px 25px; /* Adjust button padding */
-        font-size: 1em; /* Reduce button font size */
-    }
-
     .modal-content {
-        width: 95%; /* Make the modal take up more of the screen width */
-        padding: 20px; /* Reduce padding inside the modal */
-    }
-
-    .modal-content h2 {
-        font-size: 1.8em; /* Smaller modal heading */
-    }
-
-    .form-group input, .submit-btn {
-        font-size: 0.9em; /* Smaller font for form inputs and submit button */
-    }
-
-    .upi-info {
-        font-size: 1.5em; /* Smaller UPI ID font size */
+        margin-top: 20px;
     }
 }
 
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 2em;
+    }
+    .tournament-grid {
+        grid-template-columns: 1fr;
+    }
+    .modal-content {
+        padding: 20px;
+    }
+    .upi-info {
+        font-size: 1.2em;
+    }
+}
