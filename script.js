@@ -81,16 +81,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- New Code for Text Animation and Splash Screen ---
     const splashScreen = document.querySelector('.splash-screen');
-    const mainContent = document.querySelector('.main-content');
+    const bodyElements = document.querySelectorAll('body > *:not(.splash-screen)');
     
-    // Hide the main content initially
-    mainContent.style.display = 'none';
+    // Hide all other elements initially
+    bodyElements.forEach(element => {
+        element.style.opacity = '0';
+    });
 
     // Once the splash screen animation finishes, fade in the main content
     splashScreen.addEventListener('animationend', (event) => {
         if (event.animationName === 'fadeOutSplash') {
             splashScreen.style.display = 'none';
-            mainContent.style.display = 'flex'; // Use flex to match your CSS
+            bodyElements.forEach(element => {
+                element.style.opacity = '1';
+            });
         }
     });
 });
