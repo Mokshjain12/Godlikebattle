@@ -256,7 +256,6 @@ header p {
 }
 .animate-zoom {
     animation: zoomIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-
 }
 
 /* Media query for smaller mobile devices (e.g., up to 480px) */
