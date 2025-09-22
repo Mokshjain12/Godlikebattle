@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Back4App Keys
-    Parse.initialize('Ve5g09iUsDRQ6XxHvduwKg1p8LDmcomnLLFvNw', 'cuMOQUc5yAb5tSUAicgyxK06o8aNR6ruNhZf9rZQW');
-    Parse.serverURL = 'https://parseapi.back4app.com/';
+    Parse.initialize('Vxi5gO09USDRDt6XxHvduwKg1p8LdmconmLLFvNw', 'cuMOCuC5ByASbSUAcgqXO6o8atN8RuMhtZ9f2OrW');
+    Parse.serverURL = 'https://parseapi.back4app.com';
 
     const modal = document.getElementById('join-form-modal');
     const closeBtn = document.querySelector('.close-btn');
@@ -67,4 +67,5 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Error: ' + error.message);
         });
     });
+
 });
