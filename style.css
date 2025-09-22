@@ -30,7 +30,7 @@ header {
 header h1 {
     font-size: 3.5em;
     font-weight: 700;
-    color: #ff4500;
+    color: blue;
     letter-spacing: 2px;
 }
 
@@ -307,3 +307,4 @@ header p {
         font-size: 1.5em; /* Smaller UPI ID font size */
     }
 }
+
