@@ -3,24 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>God like Battle</title>
+    <title>God Like Battle - The Ultimate Gaming Tournament</title>
     <link rel="icon" href="Logo/logo.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://unpkg.com/parse@latest/dist/parse.min.js"></script>
 </head>
 <body>
 
+    <div class="splash-screen">
+        <div class="splash-content">
+            <img src="Logo/logo.png" alt="God Like Battle Logo" class="splash-logo">
+            <p class="splash-text">Presented by God Like Battle</p>
+        </div>
+    </div>
+    
+    <div class="navbar">
+        <div class="logo">
+            <img src="Logo/logo.png" width="80px">
+        </div>
+    </div>
+    
     <video autoplay muted loop id="bg-video">
         <source src="videos/free fire.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-
+    
     <div class="main-content">
-        <header class="fade-in">
-            <h1>God Like battle</h1>
-            <p>Conquer the battlefield. Win the glory.</p>
-            <p>contact us at: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+        <header class="hero-section">
+            <h1 class="glitch" data-text="God Like Battle">God Like Battle</h1>
+            <p>Conquer the battlefield. Win the glory. The ultimate tournament experience awaits you.</p>
+            <p class="contact-info">contact us at: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
         </header>
 
         <section class="tournament-grid">
@@ -30,7 +44,7 @@
                     <p class="entry-fee">Entry: ₹30</p>
                     <p class="prize-pool">Prize: ₹50</p>
                 </div>
-                <button class="join-btn" data-tournament="Solo Scrims #1" data-fee="50">Join Now</button>
+                <button class="join-btn" data-tournament="Solo Scrims #1">Join Now</button>
             </div>
             
             <div class="tournament-box slide-up">
@@ -39,7 +53,7 @@
                     <p class="entry-fee">Entry: ₹50</p>
                     <p class="prize-pool">Prize: ₹80</p>
                 </div>
-                <button class="join-btn" data-tournament="Duo Showdown #1" data-fee="100">Join Now</button>
+                <button class="join-btn" data-tournament="Duo Showdown #1">Join Now</button>
             </div>
 
             <div class="tournament-box slide-up">
@@ -48,7 +62,7 @@
                     <p class="entry-fee">Entry: ₹100</p>
                     <p class="prize-pool">Prize: ₹175</p>
                 </div>
-                <button class="join-btn" data-tournament="Squad Royale #1" data-fee="200">Join Now</button>
+                <button class="join-btn" data-tournament="Squad Royale #1">Join Now</button>
             </div>
 
             <div class="tournament-box slide-up">
@@ -57,7 +71,7 @@
                     <p class="entry-fee">Entry: ₹200</p>
                     <p class="prize-pool">Prize: ₹350</p>
                 </div>
-                <button class="join-btn" data-tournament="Solo Scrims #2" data-fee="50">Join Now</button>
+                <button class="join-btn" data-tournament="Solo Scrims #2">Join Now</button>
             </div>
 
             <div class="tournament-box slide-up">
@@ -66,7 +80,7 @@
                     <p class="entry-fee">Entry: ₹500</p>
                     <p class="prize-pool">Prize: ₹830</p>
                 </div>
-                <button class="join-btn" data-tournament="Duo Showdown #2" data-fee="100">Join Now</button>
+                <button class="join-btn" data-tournament="Duo Showdown #2">Join Now</button>
             </div>
 
             <div class="tournament-box slide-up">
@@ -75,7 +89,7 @@
                     <p class="entry-fee">Entry: ₹600</p>
                     <p class="prize-pool">Prize: ₹1000</p>
                 </div>
-                <button class="join-btn" data-tournament="Squad Royale #2" data-fee="200">Join Now</button>
+                <button class="join-btn" data-tournament="Squad Royale #2">Join Now</button>
             </div>
         </section>
     </div>
@@ -109,6 +123,23 @@
             </form>
         </div>
     </div>
+
+    <footer class="footer-section">
+        <div class="section-content">
+            <p class="copyright-text">© 2025 God like Battle</p>
+            <div class="social-link-list">
+                <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+            <p class="policy-text">
+                <a href="#" class="policy-link">Privacy policy</a>
+                <span class="separator">•</span>
+                <a href="#" class="policy-link">Refund policy</a>
+            </p>
+        </div>
+    </footer>
+
 
     <script src="script.js"></script>
 </body>
