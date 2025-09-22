@@ -256,4 +256,55 @@ header p {
 }
 .animate-zoom {
     animation: zoomIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+}
+
+/* Media query for smaller mobile devices (e.g., up to 480px) */
+@media screen and (max-width: 480px) {
+    header h1 {
+        font-size: 2.5em; /* Make the main heading smaller */
+    }
+
+    header p {
+        font-size: 1em; /* Reduce paragraph font size */
+    }
+
+    .tournament-grid {
+        grid-template-columns: 1fr; /* Stack tournament boxes in a single column */
+        gap: 20px; /* Reduce the gap between boxes */
+    }
+
+    .tournament-box {
+        padding: 20px; /* Reduce padding inside each tournament box */
+    }
+
+    .tournament-box h2 {
+        font-size: 1.5em; /* Make the tournament title smaller */
+    }
+
+    .details p {
+        font-size: 1em; /* Reduce the font size of details like entry fee and prize pool */
+    }
+
+    .join-btn {
+        padding: 12px 25px; /* Adjust button padding */
+        font-size: 1em; /* Reduce button font size */
+    }
+
+    .modal-content {
+        width: 95%; /* Make the modal take up more of the screen width */
+        padding: 20px; /* Reduce padding inside the modal */
+    }
+
+    .modal-content h2 {
+        font-size: 1.8em; /* Smaller modal heading */
+    }
+
+    .form-group input, .submit-btn {
+        font-size: 0.9em; /* Smaller font for form inputs and submit button */
+    }
+
+    .upi-info {
+        font-size: 1.5em; /* Smaller UPI ID font size */
+    }
 }
