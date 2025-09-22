@@ -1,5 +1,3 @@
-// New animation logic for the hero section text
-
 document.addEventListener('DOMContentLoaded', () => {
     // Back4App Keys
     Parse.initialize('Ve5g09iUsDRQ6XxHvduwKg1p8LDmcomnLLFvNw', 'cuMOQUc5yAb5tSUAicgyxK06o8aNR6ruNhZf9rZQW');
@@ -83,20 +81,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- New Code for Text Animation and Splash Screen ---
     const splashScreen = document.querySelector('.splash-screen');
-    const bodyElements = document.querySelectorAll('body > *:not(.splash-screen)');
+    const navbar = document.querySelector('.navbar');
+    const mainContent = document.querySelector('.main-content');
     
-    // Hide all other elements initially
-    bodyElements.forEach(element => {
-        element.style.opacity = '0';
-    });
-
-    // Once the splash screen animation finishes, fade in the main content
+    // Hide all main elements initially
+    if (navbar) navbar.style.opacity = '0';
+    if (mainContent) mainContent.style.opacity = '0';
+    
+    // Once the splash screen animation finishes, fade in the main content and navbar
     splashScreen.addEventListener('animationend', (event) => {
         if (event.animationName === 'fadeOutSplash') {
             splashScreen.style.display = 'none';
-            bodyElements.forEach(element => {
-                element.style.opacity = '1';
-            });
+            if (navbar) navbar.style.opacity = '1';
+            if (mainContent) mainContent.style.opacity = '1';
         }
     });
 });
