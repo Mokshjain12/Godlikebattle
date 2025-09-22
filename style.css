@@ -1,0 +1,259 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    background-color: #0a0a0a;
+}
+
+#bg-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    filter: brightness(0.4) saturate(1.2);
+}
+
+.main-content {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 80px 0 50px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+}
+
+header h1 {
+    font-size: 3.5em;
+    font-weight: 700;
+    color: #ff4500;
+    letter-spacing: 2px;
+}
+
+header p {
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.tournament-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.tournament-box {
+    background: rgba(15, 15, 15, 0.7);
+    border: 2px solid #ff4500;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    overflow: hidden;
+}
+
+.tournament-box:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 0 30px rgba(255, 69, 0, 0.6), 0 0 50px rgba(255, 69, 0, 0.3);
+    background: rgba(25, 25, 25, 0.8);
+}
+
+.tournament-box h2 {
+    color: #ff4500;
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.details p {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+.entry-fee {
+    color: #ffd700;
+}
+
+.prize-pool {
+    color: #00ff99;
+    font-weight: 600;
+}
+
+.join-btn {
+    background-color: #ff4500;
+    color: #fff;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 25px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.5);
+}
+
+.join-btn:hover {
+    background-color: #e63e00;
+    transform: translateY(-3px);
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    padding-top: 50px;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1e1e1e, #0a0a0a);
+    margin: 5% auto;
+    padding: 40px;
+    border: 2px solid #ff4500;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 550px;
+    position: relative;
+    box-shadow: 0 0 40px rgba(255, 69, 0, 0.4);
+}
+
+.close-btn {
+    color: #ff4500;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover, .close-btn:focus {
+    color: white;
+}
+
+.modal-content h2 {
+    font-size: 2.5em;
+    color: #ff4500;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffcc00;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    border-radius: 8px;
+    background-color: #333;
+    color: white;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #ff4500;
+    box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+    outline: none;
+}
+
+.payment-info-box {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    margin-top: 25px;
+}
+
+.payment-info {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #00ff99;
+}
+
+.upi-info {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #ffd700;
+    word-break: break-all;
+    margin-top: 10px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #ff4500;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.5);
+}
+
+.submit-btn:hover {
+    background-color: #e63e00;
+    transform: translateY(-3px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+}
+
+.tournament-box:nth-child(1) { animation-delay: 0.2s; }
+.tournament-box:nth-child(2) { animation-delay: 0.4s; }
+.tournament-box:nth-child(3) { animation-delay: 0.6s; }
+.tournament-box:nth-child(4) { animation-delay: 0.8s; }
+.tournament-box:nth-child(5) { animation-delay: 1.0s; }
+.tournament-box:nth-child(6) { animation-delay: 1.2s; }
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.animate-zoom {
+    animation: zoomIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
