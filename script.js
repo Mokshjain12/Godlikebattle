@@ -11,25 +11,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalTitle = document.getElementById('modal-title');
     const paymentAmount = document.getElementById('payment-amount');
 
+    // QR code elements
+    const showQrBtn = document.getElementById('show-qr-btn');
+    const qrCodeDisplay = document.getElementById('qr-code-display');
+
     joinButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Add pulse effect on click
+            
             button.classList.add('click-effect');
-
-            // Get tournament details
+       
             const tournamentName = button.getAttribute('data-tournament');
             const entryFeeText = button.previousElementSibling.previousElementSibling.innerText;
             const entryFee = entryFeeText.split('₹')[1];
             
-            // Update modal content
             modalTitle.innerText = `${tournamentName} Registration`;
             paymentAmount.innerText = entryFee;
             modal.style.display = 'block';
 
-            // Remove the pulse effect after the animation ends
             setTimeout(() => {
                 button.classList.remove('click-effect');
-            }, 500); // 500ms should match the animation duration
+            }, 500); 
         });
     });
 
@@ -77,6 +78,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }).catch((error) => {
             alert('Error: ' + error.message);
         });
+    });
+
+    // Toggle QR code display
+    showQrBtn.addEventListener('click', () => {
+        if (qrCodeDisplay.classList.contains('show')) {
+            qrCodeDisplay.classList.remove('show');
+            showQrBtn.innerText = 'Show QR Code';
+        } else {
+            qrCodeDisplay.classList.add('show');
+            showQrBtn.innerText = 'Hide QR Code';
+        }
     });
 
     // --- New Code for Text Animation and Splash Screen ---
