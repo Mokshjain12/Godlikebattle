@@ -6,7 +6,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* New: Hide main content and navbar by default to prevent flicker */
 body > *:not(.splash-screen) {
     opacity: 0;
     transition: opacity 1s ease-in-out;
@@ -23,7 +22,7 @@ body {
     font-family: 'Poppins', sans-serif;
     color: #fff;
     background-color: #0a0a0a;
-    overflow-x: hidden; /* Prevents horizontal scrollbar */
+    overflow-x: hidden; 
 }
 
 #bg-video {
@@ -572,6 +571,57 @@ body {
     }
 }
 
+/* QR code styling */
+.qr-button {
+    background-color: #00bfff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 191, 255, 0.4);
+}
+
+.qr-button:hover {
+    background-color: #0099cc;
+    transform: translateY(-2px);
+}
+
+.qr-code-container {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    border: 1px solid #00bfff;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.qr-code-container.show {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.qr-code-container img {
+    max-width: 200px;
+    height: auto;
+    border: 5px solid white;
+    border-radius: 5px;
+}
+
+.qr-code-container p {
+    font-size: 1.1em;
+    color: #eee;
+    margin-top: 10px;
+}
 
 /* --- Media Queries --- */
 @media (max-width: 768px) {
