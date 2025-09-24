@@ -15,6 +15,26 @@ body > *:not(.splash-screen) {
     display: flex;
     align-items: center;
     padding: 20px;
+    background: rgba(15, 15, 15, 0.7);
+    border-bottom: 1px solid #333;
+}
+
+.navbar .logo {
+    margin-right: 15px;
+}
+
+.brand-text h1 {
+    font-size: 1.8em;
+    color: red;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.brand-text p {
+    font-size: 0.9em;
+    color: #00bfff;
+    margin: 0;
 }
 
 body {
@@ -22,7 +42,7 @@ body {
     font-family: 'Poppins', sans-serif;
     color: #fff;
     background-color: #0a0a0a;
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
 
 #bg-video {
@@ -45,6 +65,45 @@ body {
     justify-content: center;
 }
 
+/* --- Notification Bar --- */
+.notification-bar {
+    width: 100%;
+    background: linear-gradient(90deg, rgba(255,0,0,0.7), rgba(255,165,0,0.7));
+    color: white;
+    padding: 10px 0;
+    overflow: hidden;
+    position: relative;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.notification-content {
+    display: flex;
+    width: max-content; /* dono copies ek line me aayengi */
+    animation: scrollText 20s linear infinite;
+}
+
+.notification-text {
+    display: flex;
+    gap: 50px;
+    padding: 0 20px;
+}
+
+.notification-text span {
+    font-weight: 600;
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+
+@keyframes scrollText {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* sirf aadha move karega */
+    }
+}
+
 /* --- Hero Section --- */
 .hero-section {
     text-align: center;
@@ -64,133 +123,8 @@ body {
     position: relative;
     display: inline-block;
     animation: textGlow 2s ease-in-out infinite alternate;
+    margin-bottom: 20px;
 }
-
-/* --- New Glitch Effect for H1 --- */
-.hero-section h1 .glitch {
-    position: relative;
-    display: inline-block;
-}
-
-.hero-section h1 .glitch:before,
-.hero-section h1 .glitch:after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #0a0a0a;
-    overflow: hidden;
-    clip: rect(0, 900px, 0, 0);
-}
-
-.hero-section h1 .glitch:before {
-    left: 2px;
-    text-shadow: -2px 0 #ff00c1;
-    animation: glitch-anim-1 2s infinite linear alternate-reverse;
-}
-
-.hero-section h1 .glitch:after {
-    left: -2px;
-    text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
-    animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
-}
-
-@keyframes glitch-anim-1 {
-    0% {
-        clip: rect(32px, 9999px, 80px, 0);
-        transform: skew(0.5deg);
-    }
-    10% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    20% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    30% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    40% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    50% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    60% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    70% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    80% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    90% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    100% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-}
-
-@keyframes glitch-anim-2 {
-    0% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    10% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    20% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    30% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    40% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    50% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    60% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    70% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    80% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    90% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-    100% {
-        clip: rect(100px, 9999px, 80px, 0);
-        transform: skew(0.4deg);
-    }
-}
-
 
 .hero-section p {
     font-size: 1.5em;
@@ -211,6 +145,27 @@ body {
 }
 .contact-info a:hover {
     color: #fff;
+}
+
+.match-rules-btn {
+    background-color: #ff4500;
+    color: #fff;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 25px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.5);
+}
+
+.match-rules-btn:hover {
+    background-color: #cc3700;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 69, 0, 0.7);
 }
 
 /* --- Tournament Grid Section --- */
@@ -410,6 +365,67 @@ body {
     transform: translateY(-3px);
 }
 
+.close-btn {
+    color: #00bfff;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover, .close-btn:focus {
+    color: white;
+}
+
+/* --- Rules Modal --- */
+.rules-content {
+    margin-top: 20px;
+}
+
+.language-selector {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.lang-btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.lang-btn.active {
+    background-color: #00bfff;
+}
+
+.rules-text {
+    display: none;
+    padding: 15px;
+    background-color: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.rules-text.active {
+    display: block;
+}
+
+.rules-text ol {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.rules-text li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
 /* --- Footer --- */
 .footer-section {
     padding: 20px 0;
@@ -501,15 +517,6 @@ body {
     50% { transform: scale(1.1); }
     100% { transform: scale(0.8); }
 }
-
-/* --- (All your previous CSS code will follow here) --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-/* ... rest of your CSS */
 
 /* --- Keyframe Animations --- */
 @keyframes fadeIn {
@@ -631,6 +638,17 @@ body {
     .modal-content {
         margin-top: 20px;
     }
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+    .navbar .logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .notification-text {
+        gap: 30px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -645,5 +663,12 @@ body {
     }
     .upi-info {
         font-size: 1.2em;
+    }
+     .notification-text span {
+        font-size: 0.8em;
+    }
+    .language-selector {
+        flex-direction: column;
+        align-items: center;
     }
 }
