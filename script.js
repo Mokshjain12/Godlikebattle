@@ -3,21 +3,70 @@ document.addEventListener('DOMContentLoaded', () => {
     Parse.initialize('Ve5g09iUsDRQ6XxHvduwKg1p8LDmcomnLLFvNw', 'cuMOQUc5yAb5tSUAicgyxK06o8aNR6ruNhZf9rZQW');
     Parse.serverURL = 'https://parseapi.back4app.com/';
 
-    // --- Original Modal and Button Logic ---
-    const modal = document.getElementById('join-form-modal');
-    const closeBtn = document.querySelector('.close-btn');
+    // --- Element Selectors ---
+    const joinFormModal = document.getElementById('join-form-modal');
+    const rulesModal = document.getElementById('rules-modal');
+    const closeButtons = document.querySelectorAll('.close-btn');
     const joinButtons = document.querySelectorAll('.join-btn');
+    const matchRulesBtn = document.querySelector('.match-rules-btn');
     const form = document.getElementById('join-form');
     const modalTitle = document.getElementById('modal-title');
     const paymentAmount = document.getElementById('payment-amount');
-
-    // QR code elements
+    const langBtns = document.querySelectorAll('.lang-btn');
+    const rulesTexts = document.querySelectorAll('.rules-text');
     const showQrBtn = document.getElementById('show-qr-btn');
     const qrCodeDisplay = document.getElementById('qr-code-display');
+    const splashScreen = document.querySelector('.splash-screen');
+    const bodyElements = document.querySelectorAll('body > *:not(.splash-screen)');
+    
+    // --- Helper Functions ---
+    const closeAllModals = () => {
+        joinFormModal.style.display = 'none';
+        rulesModal.style.display = 'none';
+        form.reset();
+    };
 
+    // --- Event Listeners ---
+    
+    // Close modals using all close buttons
+    closeButtons.forEach(btn => {
+        btn.addEventListener('click', closeAllModals);
+    });
+
+    // Close modals when clicking outside
+    window.addEventListener('click', (event) => {
+        if (event.target === joinFormModal || event.target === rulesModal) {
+            closeAllModals();
+        }
+    });
+
+    // Open Match Rules Modal
+    matchRulesBtn.addEventListener('click', () => {
+        rulesModal.style.display = 'block';
+    });
+
+    // Language Selector for Rules
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            
+            // Update active button
+            langBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // Show selected language content
+            rulesTexts.forEach(text => {
+                text.classList.remove('active');
+                if (text.classList.contains(`lang-${lang}`)) {
+                    text.classList.add('active');
+                }
+            });
+        });
+    });
+
+    // Handle Join Button clicks to open the form modal
     joinButtons.forEach(button => {
         button.addEventListener('click', () => {
-            
             button.classList.add('click-effect');
        
             const tournamentName = button.getAttribute('data-tournament');
@@ -26,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             modalTitle.innerText = `${tournamentName} Registration`;
             paymentAmount.innerText = entryFee;
-            modal.style.display = 'block';
+            joinFormModal.style.display = 'block';
 
             setTimeout(() => {
                 button.classList.remove('click-effect');
@@ -34,18 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-        form.reset();
-    });
-
-    window.addEventListener('click', (event) => {
-        if (event.target == modal) {
-            modal.style.display = 'none';
-            form.reset();
-        }
-    });
-
+    // Handle form submission and Back4App integration
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         
@@ -73,8 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Save data to Back4App
         registration.save().then(() => {
             alert('Thank you for your registration! We have received your details. Please wait, our team will contact you soon on your WhatsApp number to confirm your spot.');
-            modal.style.display = 'none';
-            form.reset();
+            closeAllModals();
         }).catch((error) => {
             alert('Error: ' + error.message);
         });
@@ -91,15 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- New Code for Text Animation and Splash Screen ---
-    const splashScreen = document.querySelector('.splash-screen');
-    const bodyElements = document.querySelectorAll('body > *:not(.splash-screen)');
-    
-    // Hide all other elements initially
-    bodyElements.forEach(element => {
-        element.style.opacity = '0';
-    });
-
+    // --- Splash Screen Logic ---
     // Once the splash screen animation finishes, fade in the main content
     splashScreen.addEventListener('animationend', (event) => {
         if (event.animationName === 'fadeOutSplash') {
