@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>God Like Battle </title>
+    <title>God Like Battle</title>
     <link rel="icon" href="imges/logo.png">
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -29,13 +29,36 @@
         <div class="logo">
             <img src="imges/logo.png" width="80px">
         </div>
+        <div class="brand-text">
+            <h1>God Like Battle</h1>
+            <p>Esports</p>
+        </div>
     </div>
+    
+    <!-- Notification Bar -->
+    <div class="notification-bar">
+        <div class="notification-content">
+            <div class="notification-text">
+                <span>⚠ English: If you are under 18, please play responsibly and avoid greed.</span>
+                <span>⚠ Hinglish: Agar aap 18 se chhote ho, toh responsibly khelo aur zyada lalach mat karo.</span>
+                <span>⚠ Hindi: यदि आपकी आयु 18 वर्ष से कम है, तो कृपया जिम्मेदारी से खेलें और अधिक लालच न करें।</span>
+            </div>
+            <!-- Duplicate copy for smooth loop -->
+            <div class="notification-text">
+                <span>⚠ English: If you are under 18, please play responsibly and avoid greed.</span>
+                <span>⚠ Hinglish: Agar aap 18 se chhote ho, toh responsibly khelo aur zyada lalach mat karo.</span>
+                <span>⚠ Hindi: यदि आपकी आयु 18 वर्ष से कम है, तो कृपया जिम्मेदारी से खेलें और अधिक लालच न करें।</span>
+            </div>
+        </div>
+    </div>
+
     
     <div class="main-content">
         <header class="hero-section">
-            <h1><span class="animated-text">God Like Battle</span></h1>
+            <h1>Free Fire Tournaments</h1>
             <p>Conquer the battlefield. Win the glory. The ultimate tournament experience awaits you.</p>
             <p class="contact-info">contact us at: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+            <button class="match-rules-btn">Match Rules</button>
         </header>
 
         <section class="tournament-grid">
@@ -95,6 +118,48 @@
         </section>
     </div>
 
+    <!-- Match Rules Modal -->
+    <div id="rules-modal" class="modal">
+        <div class="modal-content animate-zoom">
+            <span class="close-btn rules-close">&times;</span>
+            <h2>Match Rules</h2>
+            <div class="rules-content">
+                <div class="language-selector">
+                    <button class="lang-btn active" data-lang="en">English</button>
+                    <button class="lang-btn" data-lang="hin">Hindi</button>
+                    <button class="lang-btn" data-lang="hinglish">Hinglish</button>
+                </div>
+                
+                <div class="rules-text lang-en active">
+                    <ol>
+                        <li>You cannot kill the enemy by climbing on the roof of the house.</li>
+                        <li>You cannot use double vector in any match.</li>
+                        <li>In the last zone, you cannot trap the enemy in the blue zone and kill them.</li>
+                        <li>You cannot use any kind of hacks on anyone.</li>
+                    </ol>
+                </div>
+                
+                <div class="rules-text lang-hin">
+                    <ol>
+                        <li>सामने वाले दुश्मन को घर की छत पर चढ़कर नहीं मारना है।</li>
+                        <li>किसी भी मैच में डबल वेक्टर का उपयोग नहीं करना है।</li>
+                        <li>लास्ट जोन में आप सामने वाले दुश्मन को ब्लू जोन में फंसाकर नहीं मार सकते।</li>
+                        <li>आप किसी पर भी किसी प्रकार का हैक उपयोग नहीं कर सकते हैं।</li>
+                    </ol>
+                </div>
+                
+                <div class="rules-text lang-hinglish">
+                    <ol>
+                        <li>Samne wale dushman ko ghar ki chhat par chadhkar nahin maarna hai.</li>
+                        <li>Koi bhi match mein double vector use nahin karni hai.</li>
+                        <li>Last zone mein tum samne wale dushman ko blue zone mein fansa kar nahin maar sakte.</li>
+                        <li>Aur kisi per bhi kisi prakar ka hack use nahin kar sakte ho.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="join-form-modal" class="modal">
         <div class="modal-content animate-zoom">
             <span class="close-btn">&times;</span>
@@ -146,8 +211,6 @@
         </div>
     </footer>
 
-
     <script src="script.js"></script>
 </body>
 </html>
-
