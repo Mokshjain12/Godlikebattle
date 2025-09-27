@@ -35,7 +35,6 @@
         </div>
     </div>
     
-    <!-- Notification Bar -->
     <div class="notification-bar">
         <div class="notification-content">
             <div class="notification-text">
@@ -43,7 +42,6 @@
                 <span>⚠ Hinglish: Agar aap 18 se chhote ho, toh responsibly khelo aur zyada lalach mat karo.</span>
                 <span>⚠ Hindi: यदि आपकी आयु 18 वर्ष से कम है, तो कृपया जिम्मेदारी से खेलें और अधिक लालच न करें।</span>
             </div>
-            <!-- Duplicate copy for smooth loop -->
             <div class="notification-text">
                 <span>⚠ English: If you are under 18, please play responsibly and avoid greed.</span>
                 <span>⚠ Hinglish: Agar aap 18 se chhote ho, toh responsibly khelo aur zyada lalach mat karo.</span>
@@ -118,7 +116,6 @@
         </section>
     </div>
 
-    <!-- Match Rules Modal -->
     <div id="rules-modal" class="modal">
         <div class="modal-content animate-zoom">
             <span class="close-btn rules-close">&times;</span>
@@ -164,7 +161,10 @@
         <div class="modal-content animate-zoom">
             <span class="close-btn">&times;</span>
             <h2 id="modal-title"></h2>
-            <form id="join-form">
+            <form id="join-form" action="http://localhost:3000/upload" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="_captcha" value="false"> 
+                <input type="hidden" name="_template" value="table"> 
+                <input type="hidden" name="_subject" value="⚡ New Player Registration">
                 <div class="form-group">
                     <label for="playerName">Player Name</label>
                     <input type="text" id="playerName" name="playerName" required>
@@ -179,11 +179,11 @@
                 </div>
                 <div class="form-group">
                     <label for="payment-ss">Payment Screenshot</label>
-                    <input type="file" id="payment-ss" name="payment-screenshot" accept="image/*" required>
+                    <input type="file" id="payment-ss" name="paymentScreenshot" accept="image/*" required>
                 </div>
                 <div class="payment-info-box">
                     <p class="payment-info">Pay ₹<span id="payment-amount"></span> via UPI to book your spot.</p>
-                    <p class="upi-info">UPI ID: jain8001@fam</p>
+                    <p class="upi-info">UPI ID: 8003212207@fam</p>
                     <button id="show-qr-btn" class="qr-button">Show QR Code</button>
                     <div id="qr-code-display" class="qr-code-container">
                         <img id="qr-image" src="imges/QR Code.jpg" alt="UPI QR Code">
@@ -210,9 +210,6 @@
             </p>
         </div>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
-
-
