@@ -10,7 +10,7 @@ Parse.serverURL = "https://parseapi.back4app.com";
 
 // CORS headers to allow your website to talk to your server
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://mokshjain12.github.io/Godlikebattle"); 
+    res.header("Access-Control-Allow-Origin", "*"); 
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
@@ -44,6 +44,7 @@ app.post('/upload', upload.single('paymentScreenshot'), async (req, res) => {
 
 
 app.listen(3000, () => console.log('Server running on 3000'));
+
 
 
 
