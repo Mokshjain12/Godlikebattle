@@ -6,7 +6,7 @@ const app = express();
 const upload = multer();
 
 Parse.initialize("Vxi5gO09USDRDt6XxHvduwKg1p8LdmconmLLFvNw", null, "7QNlIeuFa3NVwIp1kJ8alFWkUed8lclmpC1pqICp");
-Parse.serverURL = "https://parseapi.back4app.com/";
+Parse.serverURL = "https://parseapi.back4app.com";
 
 // CORS headers to allow your website to talk to your server
 app.use((req, res, next) => {
@@ -44,5 +44,6 @@ app.post('/upload', upload.single('paymentScreenshot'), async (req, res) => {
 
 
 app.listen(3000, () => console.log('Server running on 3000'));
+
 
 
