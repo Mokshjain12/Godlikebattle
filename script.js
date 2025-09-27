@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Back4App Keys
-    Parse.initialize('Ve5g09iUsDRQ6XxHvduwKg1p8LDmcomnLLFvNw', 'cuMOQUc5yAb5tSUAicgyxK06o8aNR6ruNhZf9rZQW');
-    Parse.serverURL = 'https://parseapi.back4app.com/';
 
     // --- Element Selectors ---
     const joinFormModal = document.getElementById('join-form-modal');
@@ -80,40 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 button.classList.remove('click-effect');
             }, 500); 
-        });
-    });
-
-    // Handle form submission and Back4App integration
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        
-        const TournamentRegistration = Parse.Object.extend('TournamentRegistration');
-        const registration = new TournamentRegistration();
-
-        const tournamentName = modalTitle.innerText.replace(' Registration', '');
-        const playerName = document.getElementById('playerName').value;
-        const playerUID = document.getElementById('playerUID').value;
-        const whatsappNo = document.getElementById('whatsappNo').value;
-        const paymentFile = document.getElementById('payment-ss').files[0];
-
-        // Set form data
-        registration.set('tournamentName', tournamentName);
-        registration.set('playerName', playerName);
-        registration.set('playerUID', playerUID);
-        registration.set('whatsappNo', whatsappNo);
-
-        // Handle payment screenshot file
-        if (paymentFile) {
-            const parseFile = new Parse.File(paymentFile.name, paymentFile);
-            registration.set('paymentScreenshot', parseFile);
-        }
-
-        // Save data to Back4App
-        registration.save().then(() => {
-            alert('Thank you for your registration! We have received your details. Please wait, our team will contact you soon on your WhatsApp number to confirm your spot.');
-            closeAllModals();
-        }).catch((error) => {
-            alert('Error: ' + error.message);
         });
     });
 
