@@ -5,7 +5,7 @@ const Parse = require('parse/node');
 const app = express();
 const upload = multer();
 
-Parse.initialize("Vxi5gO09USDRDt6XxHvduwKg1p8LdmconmLLFvNw", null, "M5Zal0V8aEhs6fjd1NllgLzTvYP2pBI4mBnipqGY");
+Parse.initialize("Vxi5gO09USDRDt6XxHvduwKg1p8LdmconmLLFvNw", null, "7QNlIeuFa3NVwIp1kJ8alFWkUed8lclmpC1pqICp");
 Parse.serverURL = "https://parseapi.back4app.com/";
 
 // CORS headers to allow your website to talk to your server
@@ -44,4 +44,5 @@ app.post('/upload', upload.single('paymentScreenshot'), async (req, res) => {
 
 
 app.listen(3000, () => console.log('Server running on 3000'));
+
 
