@@ -15,9 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const qrCodeDisplay = document.getElementById('qr-code-display');
     const splashScreen = document.querySelector('.splash-screen');
     const bodyElements = document.querySelectorAll('body > *:not(.splash-screen)');
-
-    const SERVER_URL = 'http://localhost:3000/upload'; 
     
+  
+    const SERVER_URL = 'http://localhost:3000/upload'; 
+
     // --- Helper Functions ---
     const closeAllModals = () => {
         joinFormModal.style.display = 'none';
@@ -33,42 +34,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Close modals when clicking outside
-    window.addEventListener('click', (event) => {
-        if (event.target === joinFormModal || event.target === rulesModal) {
+    window.addEventListener('click', (e) => {
+        if (e.target == joinFormModal || e.target == rulesModal) {
             closeAllModals();
         }
     });
 
-    // Open Match Rules Modal
+    // Open rules modal
     matchRulesBtn.addEventListener('click', () => {
         rulesModal.style.display = 'block';
     });
 
-    // Language Selector for Rules
+    // Language toggle for rules
     langBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            const lang = btn.getAttribute('data-lang');
+            rulesTexts.forEach(textBlock => {
+                textBlock.classList.remove('active');
+            });
+            const targetLang = btn.getAttribute('data-lang');
+            document.getElementById(`rules-${targetLang}`).classList.add('active');
             
-            // Update active button
             langBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            
-            // Show selected language content
-            rulesTexts.forEach(text => {
-                text.classList.remove('active');
-                if (text.classList.contains(`lang-${lang}`)) {
-                    text.classList.add('active');
-                }
-            });
         });
     });
 
-    // Handle Join Button clicks to open the form modal
+    // Join button logic
     joinButtons.forEach(button => {
         button.addEventListener('click', () => {
             button.classList.add('click-effect');
        
             const tournamentName = button.getAttribute('data-tournament');
+            // '₹' symbol hata kar fee nikalne ke liye
             const entryFeeText = button.previousElementSibling.previousElementSibling.innerText;
             const entryFee = entryFeeText.split('₹')[1];
             
@@ -103,5 +100,48 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
-});
 
+    // --- Form Submission Logic (Mukhya Badlav) ---
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('.submit-btn');
+        const originalText = submitBtn.innerText;
+
+        // Loading state
+        submitBtn.innerText = 'Submitting...';
+        submitBtn.disabled = true;
+
+        try {
+            // Data ko custom Node.js server par bhejna
+            const response = await fetch(SERVER_URL, {
+                method: 'POST',
+                // FormData use karne par 'Content-Type' header ki zaroorat nahi hoti, browser khud set kar deta hai
+                body: formData 
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                // Safaltapoorvak registration
+                alert("Registration saved successfully! Aapko jaldi hi WhatsApp par confirm kiya jayega.");
+                form.reset();
+                closeAllModals(); // Modal band karen
+            } else {
+
+                const errorMsg = result.error || "An unknown error occurred on the server.";
+                alert(`Error: ${errorMsg}`);
+                console.error('Server error:', result);
+            }
+        } catch (error) {
+
+            alert("Network Error: Registration failed. Please check your server connection or try again.");
+            console.error('Fetch error:', error);
+        } finally {
+
+            submitBtn.innerText = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+});
