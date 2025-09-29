@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const qrCodeDisplay = document.getElementById('qr-code-display');
     const splashScreen = document.querySelector('.splash-screen');
     const bodyElements = document.querySelectorAll('body > *:not(.splash-screen)');
+
+    const SERVER_URL = 'http://localhost:3000/upload'; 
     
     // --- Helper Functions ---
     const closeAllModals = () => {
@@ -102,3 +104,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
