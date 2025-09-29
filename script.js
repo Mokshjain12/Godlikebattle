@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Back4App Keys
+    Parse.initialize('Ve5g09iUsDRQ6XxHvduwKg1p8LDmcomnLLFvNw', 'cuMOQUc5yAb5tSUAicgyxK06o8aNR6ruNhZf9rZQW');
+    Parse.serverURL = 'https://parseapi.back4app.com/';
 
-    // --- Element Selectors ---
-    const joinFormModal = document.getElementById('join-form-modal');
+    // --- Original Modal and Button Logic ---
+    const modal = document.getElementById('join-form-modal');
     const rulesModal = document.getElementById('rules-modal');
-    const closeButtons = document.querySelectorAll('.close-btn');
+    const closeBtn = document.querySelector('.close-btn');
+    const rulesCloseBtn = document.querySelector('.rules-close');
     const joinButtons = document.querySelectorAll('.join-btn');
     const matchRulesBtn = document.querySelector('.match-rules-btn');
     const form = document.getElementById('join-form');
@@ -11,71 +15,110 @@ document.addEventListener('DOMContentLoaded', () => {
     const paymentAmount = document.getElementById('payment-amount');
     const langBtns = document.querySelectorAll('.lang-btn');
     const rulesTexts = document.querySelectorAll('.rules-text');
+
+    // QR code elements
     const showQrBtn = document.getElementById('show-qr-btn');
     const qrCodeDisplay = document.getElementById('qr-code-display');
-    const splashScreen = document.querySelector('.splash-screen');
-    const bodyElements = document.querySelectorAll('body > *:not(.splash-screen)');
-    
-  
-    const SERVER_URL = 'http://localhost:3000/upload'; 
 
-    // --- Helper Functions ---
-    const closeAllModals = () => {
-        joinFormModal.style.display = 'none';
-        rulesModal.style.display = 'none';
-        form.reset();
-    };
-
-    // --- Event Listeners ---
-    
-    // Close modals using all close buttons
-    closeButtons.forEach(btn => {
-        btn.addEventListener('click', closeAllModals);
-    });
-
-    // Close modals when clicking outside
-    window.addEventListener('click', (e) => {
-        if (e.target == joinFormModal || e.target == rulesModal) {
-            closeAllModals();
-        }
-    });
-
-    // Open rules modal
+    // Match Rules Button Event
     matchRulesBtn.addEventListener('click', () => {
         rulesModal.style.display = 'block';
     });
 
-    // Language toggle for rules
+    // Language Selector for Rules
     langBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            rulesTexts.forEach(textBlock => {
-                textBlock.classList.remove('active');
-            });
-            const targetLang = btn.getAttribute('data-lang');
-            document.getElementById(`rules-${targetLang}`).classList.add('active');
+            const lang = btn.getAttribute('data-lang');
             
+            // Update active button
             langBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
+            
+            // Show selected language content
+            rulesTexts.forEach(text => {
+                text.classList.remove('active');
+                if (text.classList.contains(`lang-${lang}`)) {
+                    text.classList.add('active');
+                }
+            });
         });
     });
 
-    // Join button logic
+    // Close Rules Modal
+    rulesCloseBtn.addEventListener('click', () => {
+        rulesModal.style.display = 'none';
+    });
+
+    // Close Rules Modal when clicking outside
+    window.addEventListener('click', (event) => {
+        if (event.target == rulesModal) {
+            rulesModal.style.display = 'none';
+        }
+    });
+
+    // Original Join Button Logic
     joinButtons.forEach(button => {
         button.addEventListener('click', () => {
+            
             button.classList.add('click-effect');
        
             const tournamentName = button.getAttribute('data-tournament');
-            // '₹' symbol hata kar fee nikalne ke liye
             const entryFeeText = button.previousElementSibling.previousElementSibling.innerText;
             const entryFee = entryFeeText.split('₹')[1];
             
             modalTitle.innerText = `${tournamentName} Registration`;
             paymentAmount.innerText = entryFee;
-            joinFormModal.style.display = 'block';
+            modal.style.display = 'block';
 
             setTimeout(() => {
                 button.classList.remove('click-effect');
             }, 500); 
+        });
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        form.reset();
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+            form.reset();
+        }
+    });
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        
+        const TournamentRegistration = Parse.Object.extend('TournamentRegistration');
+        const registration = new TournamentRegistration();
+
+        const tournamentName = modalTitle.innerText.replace(' Registration', '');
+        const playerName = document.getElementById('playerName').value;
+        const playerUID = document.getElementById('playerUID').value;
+        const whatsappNo = document.getElementById('whatsappNo').value;
+        const paymentFile = document.getElementById('payment-ss').files[0];
+
+        // Set form data
+        registration.set('tournamentName', tournamentName);
+        registration.set('playerName', playerName);
+        registration.set('playerUID', playerUID);
+        registration.set('whatsappNo', whatsappNo);
+
+        // Handle payment screenshot file
+        if (paymentFile) {
+            const parseFile = new Parse.File(paymentFile.name, paymentFile);
+            registration.set('paymentScreenshot', parseFile);
+        }
+
+        // Save data to Back4App
+        registration.save().then(() => {
+            alert('Thank you for your registration! We have received your details. Please wait, our team will contact you soon on your WhatsApp number to confirm your spot.');
+            modal.style.display = 'none';
+            form.reset();
+        }).catch((error) => {
+            alert('Error: ' + error.message);
         });
     });
 
@@ -90,7 +133,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Splash Screen Logic ---
+    // --- New Code for Text Animation and Splash Screen ---
+    const splashScreen = document.querySelector('.splash-screen');
+    const bodyElements = document.querySelectorAll('body > *:not(.splash-screen)');
+    
+    // Hide all other elements initially
+    bodyElements.forEach(element => {
+        element.style.opacity = '0';
+    });
+
     // Once the splash screen animation finishes, fade in the main content
     splashScreen.addEventListener('animationend', (event) => {
         if (event.animationName === 'fadeOutSplash') {
@@ -98,50 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
             bodyElements.forEach(element => {
                 element.style.opacity = '1';
             });
-        }
-    });
-
-    // --- Form Submission Logic (Mukhya Badlav) ---
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(form);
-        const submitBtn = form.querySelector('.submit-btn');
-        const originalText = submitBtn.innerText;
-
-        // Loading state
-        submitBtn.innerText = 'Submitting...';
-        submitBtn.disabled = true;
-
-        try {
-            // Data ko custom Node.js server par bhejna
-            const response = await fetch(SERVER_URL, {
-                method: 'POST',
-                // FormData use karne par 'Content-Type' header ki zaroorat nahi hoti, browser khud set kar deta hai
-                body: formData 
-            });
-
-            const result = await response.json();
-
-            if (response.ok && result.success) {
-                // Safaltapoorvak registration
-                alert("Registration saved successfully! Aapko jaldi hi WhatsApp par confirm kiya jayega.");
-                form.reset();
-                closeAllModals(); // Modal band karen
-            } else {
-
-                const errorMsg = result.error || "An unknown error occurred on the server.";
-                alert(`Error: ${errorMsg}`);
-                console.error('Server error:', result);
-            }
-        } catch (error) {
-
-            alert("Network Error: Registration failed. Please check your server connection or try again.");
-            console.error('Fetch error:', error);
-        } finally {
-
-            submitBtn.innerText = originalText;
-            submitBtn.disabled = false;
         }
     });
 });
