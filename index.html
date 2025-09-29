@@ -31,25 +31,20 @@
         </div>
         <div class="brand-text">
             <h1>God Like Battle</h1>
-            <p>Esports</p>
+            <p>Free Fire Tournaments</p>
         </div>
     </div>
     
+    <!-- Notification Bar -->
     <div class="notification-bar">
         <div class="notification-content">
-            <div class="notification-text">
-                <span>⚠ English: If you are under 18, please play responsibly and avoid greed.</span>
-                <span>⚠ Hinglish: Agar aap 18 se chhote ho, toh responsibly khelo aur zyada lalach mat karo.</span>
-                <span>⚠ Hindi: यदि आपकी आयु 18 वर्ष से कम है, तो कृपया जिम्मेदारी से खेलें और अधिक लालच न करें।</span>
-            </div>
-            <div class="notification-text">
-                <span>⚠ English: If you are under 18, please play responsibly and avoid greed.</span>
-                <span>⚠ Hinglish: Agar aap 18 se chhote ho, toh responsibly khelo aur zyada lalach mat karo.</span>
-                <span>⚠ Hindi: यदि आपकी आयु 18 वर्ष से कम है, तो कृपया जिम्मेदारी से खेलें और अधिक लालच न करें।</span>
-            </div>
+            <span class="notification-text">
+                <span class="lang-en">If you are under 18 years of age, please play responsibly and avoid excessive gaming.</span>
+                <span class="lang-hin">यदि आप 18 वर्ष से कम उम्र के हैं, तो कृपया जिम्मेदारी से खेलें और अत्यधिक गेमिंग से बचें।</span>
+                <span class="lang-hinglish">Agar aap 18 saal se kam umar ke hain, toh please responsibly khelein aur excessive gaming se bachein.</span>
+            </span>
         </div>
     </div>
-
     
     <div class="main-content">
         <header class="hero-section">
@@ -116,6 +111,7 @@
         </section>
     </div>
 
+    <!-- Match Rules Modal -->
     <div id="rules-modal" class="modal">
         <div class="modal-content animate-zoom">
             <span class="close-btn rules-close">&times;</span>
@@ -131,7 +127,7 @@
                     <ol>
                         <li>You cannot kill the enemy by climbing on the roof of the house.</li>
                         <li>You cannot use double vector in any match.</li>
-                        <li>In the last zone, you cannot trap the enemy in the Gloo Wall and kill them.</li>
+                        <li>In the last zone, you cannot trap the enemy in the blue zone and kill them.</li>
                         <li>You cannot use any kind of hacks on anyone.</li>
                     </ol>
                 </div>
@@ -140,7 +136,7 @@
                     <ol>
                         <li>सामने वाले दुश्मन को घर की छत पर चढ़कर नहीं मारना है।</li>
                         <li>किसी भी मैच में डबल वेक्टर का उपयोग नहीं करना है।</li>
-                        <li>लास्ट जोन में आप सामने वाले दुश्मन को ग्लू वॉल में फंसाकर नहीं मार सकते।</li>
+                        <li>लास्ट जोन में आप सामने वाले दुश्मन को ब्लू जोन में फंसाकर नहीं मार सकते।</li>
                         <li>आप किसी पर भी किसी प्रकार का हैक उपयोग नहीं कर सकते हैं।</li>
                     </ol>
                 </div>
@@ -149,7 +145,7 @@
                     <ol>
                         <li>Samne wale dushman ko ghar ki chhat par chadhkar nahin maarna hai.</li>
                         <li>Koi bhi match mein double vector use nahin karni hai.</li>
-                        <li>Last zone mein tum samne wale dushman ko Gloo Wall mein fansa kar nahin maar sakte.</li>
+                        <li>Last zone mein tum samne wale dushman ko blue zone mein fansa kar nahin maar sakte.</li>
                         <li>Aur kisi per bhi kisi prakar ka hack use nahin kar sakte ho.</li>
                     </ol>
                 </div>
@@ -161,10 +157,7 @@
         <div class="modal-content animate-zoom">
             <span class="close-btn">&times;</span>
             <h2 id="modal-title"></h2>
-            <form id="join-form" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="_captcha" value="false"> 
-                <input type="hidden" name="_template" value="table"> 
-                <input type="hidden" name="_subject" value="⚡ New Player Registration">
+            <form id="join-form">
                 <div class="form-group">
                     <label for="playerName">Player Name</label>
                     <input type="text" id="playerName" name="playerName" required>
@@ -179,7 +172,7 @@
                 </div>
                 <div class="form-group">
                     <label for="payment-ss">Payment Screenshot</label>
-                    <input type="file" id="payment-ss" name="paymentScreenshot" accept="image/*" required>
+                    <input type="file" id="payment-ss" name="payment-screenshot" accept="image/*" required>
                 </div>
                 <div class="payment-info-box">
                     <p class="payment-info">Pay ₹<span id="payment-amount"></span> via UPI to book your spot.</p>
@@ -210,6 +203,7 @@
             </p>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
-</html>
+                </html>
