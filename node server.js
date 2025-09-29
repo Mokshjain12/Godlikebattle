@@ -43,11 +43,4 @@ app.post('/upload', upload.single('paymentScreenshot'), async (req, res) => {
     }
 });
 
-
 app.listen(3000, () => console.log('Server running on 3000'));
-
-
-
-
-
-
